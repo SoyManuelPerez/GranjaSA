@@ -27,47 +27,58 @@
               <h4> Datos del Porcino</h4>
               <form action="/crear" method="POST">
                 <div class="col-md-6">
-                    <label for="cedula" class="form-label" >Cedula</label>
-                    <input id="cedula" name="cedula" type="number" class="form-control" required>
+                    <label for="id_porcino" class="form-label" >ID</label>
+                    <input id="id_porcino" name="id_porcino" type="number" class="form-control" required>
                 </div>
                 <div class="col-md-6">
-                    <label for="nombre" class="form-label" >Nombre</label>
-                    <input id="nombre" name="nombre" type="text" class="form-control" required>
+                    <label for="raza_por" class="form-label" >Raza</label>
+                    <input id="raza_por" name="raza_por" type="text" class="form-control" required>
                 </div>
                 <div class="col-md-6">
-                    <label for="direccion" class="form-label" >Direccion</label>
-                    <input id="direccion" name="direccion" type="text" class="form-control" required>
+                    <label for="edad_por" class="form-label" >Edad</label>
+                    <input id="edad_por" name="edad_por" type="number" class="form-control" required>
                 </div>
                 <div class="col-md-6">
-                    <label for="telefono" class="form-label" >Telefono</label>
-                    <input id="telefono" name="telefono" type="number" class="form-control" required>
+                    <label for="peso_por" class="form-label" >Peso</label>
+                    <input id="peso_por" name="peso_por" type="number" class="form-control" required>
                 </div>
+                <div class="col-md-6">
+                  <label for="alim_por" class="form-label" >Alimentacion</label>
+                  <input id="alim_por" name="alim_por" type="number" class="form-control" required>
+              </div>
+              <div class="col-md-6">
+                <label for="cli_por" class="form-label" >Cliente</label>
+                <input id="cli_por" name="cli_por" type="number" class="form-control" required>
             </div>
-
-                <button type="submit" class="w-100 btn btn-guardar btn-lg"> <i class="bi bi-save"></i>Registrar Cliente</button>
+            </div>
+                <button type="submit" class="w-100 btn btn-guardar btn-lg"> <i class="bi bi-save"></i>Registrar Porcino</button>
               </form>
          </div>
          <div class="container">
-              <table id="tablaClientes" class="table mt-4">
+              <table id="tablaPorcinos" class="table mt-4">
                 <thead>
                     <tr>
-                        <th>Cedula</th>
-                        <th>Nombre</th>
-                        <th>Direccion</th>
-                        <th>Telefono</th>
+                        <th>ID</th>
+                        <th>Raza</th>
+                        <th>Edad</th>
+                        <th>Peso</th>
+                        <th>Alimentacion</th>
+                        <th>Cliente</th>
                         <th>Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <% clientes.forEach( (cliente) => { %>
+                    <% porcinos.forEach( (porcino) => { %>
                         <tr>
-                            <td> <%= cliente.cedula %></td>
-                            <td> <%= cliente.nombre %></td>
-                            <td> <%= cliente.dir %></td>
-                            <td> <%= cliente.tel %></td>
+                            <td> <%= porcino.id_por %></td>
+                            <td> <%= porcino.raza_por %></td>
+                            <td> <%= porcino.edad_por %></td>
+                            <td> <%= porcino.peso_por %></td>
+                            <td> <%= porcino.alim_por %></td>
+                            <td> <%= porcino.cliente_por %></td>
                             <td> 
                                 <a type="button" class="btnEditar btn btn-outline-primary bi bi-pencil"> </a>
-                                <a href="/borrar/<%= cliente.id %>" class="btn btn-outline-danger bi bi-trash"> </a>
+                                <a href="/borrar/<%= porcino.id_por %>" class="btn btn-outline-danger bi bi-trash"> </a>
                             </td>
                         </tr>
                    <% }) %>
@@ -78,31 +89,35 @@
       </div>
 
 <!-- ventana modal -->
-<div id="modalCliente" class="modal fade" tabindex="-1" aria-labelledby="modalCliente" aria-hidden="true">
+<div id="modalPorcino" class="modal fade" tabindex="-1" aria-labelledby="modalPorcino" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title" id="exampleModalLabel">Editar informacion</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Editar informacion porcino</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form action="/editar" method="POST">
                     <div class="mb-3">
-                        <label for="cedula_editar" class="col-form-label">Cedula:</label>
-                        <input id="cedula_editar" name="cedula_editar" type="text" class="form-control" value="">
+                        <label for="raza_por_editar" class="col-form-label">Raza:</label>
+                        <input id="raza_por_editar" name="raza_por_editar" type="text" class="form-control" value="">
                     </div>
                     <div>
-                        <label for="nombre_editar" class="col-form-label">Nombre:</label>
-                        <input id="nombre_editar" name="nombre_editar" type="text" class="form-control" value="">
+                        <label for="edad_por_editar" class="col-form-label">Edad:</label>
+                        <input id="edad_por_editar" name="edad_por_editar" type="text" class="form-control" value="">
                     </div>
                     <div>
-                        <label for="dir_editar" class="col-form-label">Direccion:</label>
-                        <input id="dir_editar" name="dir_editar" type="text" class="form-control" value="">
+                        <label for="peso_por_editar" class="col-form-label">Peso:</label>
+                        <input id="peso_por_editar" name="peso_por_editar" type="text" class="form-control" value="">
                     </div>
                     <div>
-                        <label for="tel_editar" class="col-form-label">Telefono:</label>
+                        <label for="alim_por_editar" class="col-form-label">Alimento:</label>
                         <input id="tel_editar" name="tel_editar" type="text" class="form-control" value="">
                     </div>
+                    <div>
+                      <label for="cliente_por_editar" class="col-form-label">Cliente:</label>
+                      <input id="cliente_por_editar" name="cliente_por_editar" type="text" class="form-control" value="">
+                  </div>
             </div>
             <div class="modal-footer">
             <button type="submit" class="btn btn-primary">Actualizar</button>
