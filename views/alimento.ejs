@@ -25,18 +25,21 @@
           <div class="shadow-lg pb-3 mb-5 bg-body rounded">
               <h4> Datos del Alimento</h4>
               <form action="/crearAlimento" method="POST">
+                <center>
                 <div class="col-md-6">
                     <label for="id" class="form-label" >ID</label>
                     <input id="id" name="id" type="number" class="form-control" required>
                 </div>
                 <div class="col-md-6">
-                    <label for="Descripcion" class="form-label" >Descripcion</label>
+                    <label for="Descripcion" class="form-label" >Nombre</label>
                     <input id="Descripcion" name="Descripcion" type="text" class="form-control" required>
                 </div>
                 <div class="col-md-6">
                     <label for="Dosis" class="form-label" >Dosis</label>
-                    <input id="Dosis" name="Dosis" type="number" class="form-control" required>
+                    <input id="Dosis" name="Dosis" type="text" class="form-control" required>
                 </div>
+                </center>
+            </div>
                 <button type="submit" class="w-100 btn btn-guardar btn-lg"> <i class="bi bi-save"></i>Registrar Alimento</button>
               </form>
          </div>
@@ -54,11 +57,11 @@
                     <% alimentos.forEach( (alimentos) => { %>
                         <tr>
                             <td> <%= alimentos.id %></td>
-                            <td> <%= alimentos.Descripcion %></td>
+                            <td> <%= alimentos.Nombre %></td>
                             <td> <%= alimentos.Dosis %></td>
                             <td> 
-                                <a type="button" class="btnEditar btn btn-outline-primary bi bi-pencil"> </a>
-                                <a href="/borrar/<%= alimentos.Descripcio %>" class="btn btn-outline-danger bi bi-trash"> </a>
+                                <a type="button" class="btnEditaralimentos btn btn-outline-primary bi bi-pencil"> </a>
+                                <a href="/borrarAlimento/<%= alimentos.id %>" class="btn btn-outline-danger bi bi-trash"> </a>
                             </td>
                         </tr>
                    <% }) %>
@@ -69,39 +72,35 @@
       </div>
 
 <!-- ventana modal -->
-<div id="modalCliente" class="modal fade" tabindex="-1" aria-labelledby="modalCliente" aria-hidden="true">
+<div id="modalAlimentos" class="modal fade" tabindex="-1" aria-labelledby="modalAlimentos" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title" id="exampleModalLabel">Editar informacion</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Editar Alimento</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/editar" method="POST">
+                <form action="/editarAlimento" method="POST">
                     <div class="mb-3">
-                        <label for="cedula_editar" class="col-form-label">Cedula:</label>
-                        <input id="cedula_editar" name="cedula_editar" type="text" class="form-control" value="">
+                        <label for="id_editar" class="col-form-label">Id:</label>
+                        <input id="id_editar" name="id_editar" type="text" class="form-control" value="">
                     </div>
                     <div>
                         <label for="nombre_editar" class="col-form-label">Nombre:</label>
                         <input id="nombre_editar" name="nombre_editar" type="text" class="form-control" value="">
                     </div>
                     <div>
-                        <label for="dir_editar" class="col-form-label">Direccion:</label>
-                        <input id="dir_editar" name="dir_editar" type="text" class="form-control" value="">
+                        <label for="dosis_editar" class="col-form-label">Dosis:</label>
+                        <input id="dosis_editar" name="dosis_editar" type="text" class="form-control" value="">
                     </div>
-                    <div>
-                        <label for="tel_editar" class="col-form-label">Telefono:</label>
-                        <input id="tel_editar" name="tel_editar" type="text" class="form-control" value="">
-                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                        </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Actualizar</button>
             </div>
         </div>
     </div>
 </div>
-    <script src="js/code.js"></script>
+    <script src="js/modalAlimentos.js"></script>
   </body>
 </html>
