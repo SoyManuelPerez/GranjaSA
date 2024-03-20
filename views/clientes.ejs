@@ -26,6 +26,7 @@
           <div class="shadow-lg pb-3 mb-5 bg-body rounded">
               <h4> Datos del cliente</h4>
               <form action="/crear" method="POST">
+                <center>
                 <div class="col-md-6">
                     <label for="cedula" class="form-label" >Cedula</label>
                     <input id="cedula" name="cedula" type="number" class="form-control" required>
@@ -42,6 +43,7 @@
                     <label for="telefono" class="form-label" >Telefono</label>
                     <input id="telefono" name="telefono" type="number" class="form-control" required>
                 </div>
+            </center>
             </div>
 
                 <button type="submit" class="w-100 btn btn-guardar btn-lg"> <i class="bi bi-save"></i>Registrar Cliente</button>
@@ -67,7 +69,7 @@
                             <td> <%= cliente.tel %></td>
                             <td> 
                                 <a type="button" class="btnEditar btn btn-outline-primary bi bi-pencil"> </a>
-                                <a href="/borrar/<%= cliente.id %>" class="btn btn-outline-danger bi bi-trash"> </a>
+                                <a href="/borrar/<%= cliente.cedula %>" class="btn btn-outline-danger bi bi-trash"> </a>
                             </td>
                         </tr>
                    <% }) %>
@@ -89,7 +91,7 @@
                 <form action="/editar" method="POST">
                     <div class="mb-3">
                         <label for="cedula_editar" class="col-form-label">Cedula:</label>
-                        <input id="cedula_editar" name="cedula_editar" type="text" class="form-control" value="">
+                        <input id="cedula_editar" name="cedula_editar" type="text" class="form-control" readonly >
                     </div>
                     <div>
                         <label for="nombre_editar" class="col-form-label">Nombre:</label>
@@ -103,11 +105,12 @@
                         <label for="tel_editar" class="col-form-label">Telefono:</label>
                         <input id="tel_editar" name="tel_editar" type="text" class="form-control" value="">
                     </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                        </div>
                 </form>
             </div>
-            <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Actualizar</button>
-            </div>
+            
         </div>
     </div>
 </div>

@@ -12,5 +12,5 @@ router.post('/crear',clienteController.crear)
 //Modificar
 router.post('/editar',clienteController.editar)
 // Eliminar
-router.get('/borrar/:id',clienteController.eliminar)
+router.get('/borrar/:cedula',clienteController.eliminar)
 module.exports = router

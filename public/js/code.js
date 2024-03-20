@@ -13,5 +13,6 @@ on(document, 'click', '.btnEditar', e => {
      nombre_editar.value  = fila.children[1].innerHTML;
      dir_editar.value  = fila.children[2].innerHTML;
      tel_editar.value  = fila.children[3].innerHTML;
+     cedula_editar.setAttribute('readonly', true)
         modalCliente.show();
   })

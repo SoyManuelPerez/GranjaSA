@@ -19,17 +19,29 @@ module.exports.crear = (req, res) => {
     }
 // editar
 module.exports.editar = (req,res) =>{
-    const id= req.body.id
     const cedula = req.body.cedula_editar
     const nombre = req.body.nombre_editar
     const dir = req.body.dir_editar
     const tel = req.body.tel_editar
-    Cliente.findByIdAndUpdate(id,{cedula,nombre,dir,tel})
+    console.log(cedula)
+    Cliente.findOneAndUpdate({cedula:cedula},{nombre,dir,tel})
+    .then(resultado=>{
+        console.log("Objeto Actualizado : ", resultado); 
+    })
+    .catch(error=>{
+        console.log(error) 
+    })
     res.redirect('/clientes')  
 }
 // eliminar 
 module.exports.eliminar = (req,res) =>{
-    const id = req.params.id
-    Cliente.deleteOne({ _id: id })
+    const cedula = req.params.cedula
+    Cliente.findOneAndDelete({cedula:cedula}).exec()
+  .then(resultado => {
+    console.log("Objeto eliminado : ", resultado); 
+  })
+  .catch(error => {
+    console.log(error) 
+  });
     res.redirect('/clientes')       
 }
