@@ -21,6 +21,98 @@
     <header>
         include<%- include('barraNav'); %>
     </header>
-    <h1>Porcinos</h1>
+    <div class="Formulario">
+      <div class="container">
+          <div class="shadow-lg pb-3 mb-5 bg-body rounded">
+              <h4> Datos del Porcino</h4>
+              <form action="/crear" method="POST">
+                <div class="col-md-6">
+                    <label for="cedula" class="form-label" >Cedula</label>
+                    <input id="cedula" name="cedula" type="number" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="nombre" class="form-label" >Nombre</label>
+                    <input id="nombre" name="nombre" type="text" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="direccion" class="form-label" >Direccion</label>
+                    <input id="direccion" name="direccion" type="text" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="telefono" class="form-label" >Telefono</label>
+                    <input id="telefono" name="telefono" type="number" class="form-control" required>
+                </div>
+            </div>
+
+                <button type="submit" class="w-100 btn btn-guardar btn-lg"> <i class="bi bi-save"></i>Registrar Cliente</button>
+              </form>
+         </div>
+         <div class="container">
+              <table id="tablaClientes" class="table mt-4">
+                <thead>
+                    <tr>
+                        <th>Cedula</th>
+                        <th>Nombre</th>
+                        <th>Direccion</th>
+                        <th>Telefono</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% clientes.forEach( (cliente) => { %>
+                        <tr>
+                            <td> <%= cliente.cedula %></td>
+                            <td> <%= cliente.nombre %></td>
+                            <td> <%= cliente.dir %></td>
+                            <td> <%= cliente.tel %></td>
+                            <td> 
+                                <a type="button" class="btnEditar btn btn-outline-primary bi bi-pencil"> </a>
+                                <a href="/borrar/<%= cliente.id %>" class="btn btn-outline-danger bi bi-trash"> </a>
+                            </td>
+                        </tr>
+                   <% }) %>
+                </tbody>
+
+              </table>
+
+      </div>
+
+<!-- ventana modal -->
+<div id="modalCliente" class="modal fade" tabindex="-1" aria-labelledby="modalCliente" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="exampleModalLabel">Editar informacion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/editar" method="POST">
+                    <div class="mb-3">
+                        <label for="cedula_editar" class="col-form-label">Cedula:</label>
+                        <input id="cedula_editar" name="cedula_editar" type="text" class="form-control" value="">
+                    </div>
+                    <div>
+                        <label for="nombre_editar" class="col-form-label">Nombre:</label>
+                        <input id="nombre_editar" name="nombre_editar" type="text" class="form-control" value="">
+                    </div>
+                    <div>
+                        <label for="dir_editar" class="col-form-label">Direccion:</label>
+                        <input id="dir_editar" name="dir_editar" type="text" class="form-control" value="">
+                    </div>
+                    <div>
+                        <label for="tel_editar" class="col-form-label">Telefono:</label>
+                        <input id="tel_editar" name="tel_editar" type="text" class="form-control" value="">
+                    </div>
+            </div>
+            <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Actualizar</button>
+            </div>
+          </form>
+        </div>
+    </div>
+</div>
+    <script src="js/code.js"></script>
+  </body>
+</html>
   </body>
 </html>
