@@ -10,6 +10,6 @@ router.post('/crearAlimento',alimetoscontroller.crear)
 //Modificar
 router.post('/editarAlimento',alimetoscontroller.editar)
 // Eliminar
-router.get('/borrarAlimeto/:id',alimetoscontroller.eliminar)
+router.get('/borrarAlimento/:codigo',alimetoscontroller.eliminar)
 
 module.exports = router

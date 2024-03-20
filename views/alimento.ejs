@@ -56,12 +56,12 @@
                 <tbody>
                     <% alimentos.forEach( (alimentos) => { %>
                         <tr>
-                            <td> <%= alimentos.id %></td>
+                            <td> <%= alimentos.codigo %></td>
                             <td> <%= alimentos.Nombre %></td>
                             <td> <%= alimentos.Dosis %></td>
                             <td> 
                                 <a type="button" class="btnEditaralimentos btn btn-outline-primary bi bi-pencil"> </a>
-                                <a href="/borrarAlimento/<%= alimentos.id %>" class="btn btn-outline-danger bi bi-trash"> </a>
+                                <a href="/borrarAlimento/<%= alimentos.codigo %>" class="btn btn-outline-danger bi bi-trash"> </a>
                             </td>
                         </tr>
                    <% }) %>
