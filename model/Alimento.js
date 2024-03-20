@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const aliemnto = new mongoose.Schema ({
-    id: Number,
+    codigo: Number,
     Nombre: String,
     Dosis: String,
 })

@@ -9,7 +9,7 @@ module.exports.mostrar = (req, res) => {
 //crear 
 module.exports.crear = (req, res) => {
     const alimentos = new Alimento ({
-        id:req.body.id,
+        codigo:req.body.id,
         Nombre: req.body.Descripcion ,
         Dosis : req.body.Dosis
     })
@@ -18,7 +18,7 @@ module.exports.crear = (req, res) => {
     }
 // editar
 module.exports.editar = (req,res) =>{
-    const id = req.body.id_editar
+    const codigo = req.body.id_editar
     const Nombre = req.body.nombre_editar
     const Dosis = req.body.dosis_editar
     Alimento.findOneAndUpdate({id:id},{Nombre,Dosis})
@@ -32,9 +32,9 @@ module.exports.editar = (req,res) =>{
 }
 // eliminar 
 module.exports.eliminar = (req,res) =>{
-    const id = req.params.id
+    const id = req.params.codigo
     console.log(id)
-    Alimento.findOneAndDelete({id:id}).exec()
+    Alimento.findOneAndDelete({codigo:id}).exec()
   .then(resultado => {
     console.log("Objeto eliminado : ", resultado); 
   })
