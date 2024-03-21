@@ -23,7 +23,6 @@ module.exports.editar = (req,res) =>{
     const nombre = req.body.nombre_editar
     const dir = req.body.dir_editar
     const tel = req.body.tel_editar
-    console.log(cedula)
     Cliente.findOneAndUpdate({cedula:cedula},{nombre,dir,tel})
     .then(resultado=>{
         console.log("Objeto Actualizado : ", resultado); 

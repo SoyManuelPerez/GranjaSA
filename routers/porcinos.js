@@ -7,8 +7,8 @@ router.get('/',porcinoController.mostrar,(req,res)=>{
 // agregar porcinos
 router.post('/crear',porcinoController.crear)
 //Modificar
-router.post('/editar',porcinoController.editar)
+router.post('/editarPorcino',porcinoController.editar)
 // Eliminar
-router.get('/borrar/:id_por',porcinoController.eliminar)
+router.get('/borrarPorcino/:id_por',porcinoController.eliminar)
 
 module.exports = router

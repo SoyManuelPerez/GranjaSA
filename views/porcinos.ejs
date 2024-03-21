@@ -108,7 +108,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/editarCliente" method="POST">
+                <form action="/editarPorcino" method="POST">
+                    <div class="mb-3">
+                        <label for="id_por_editar"  class="col-form-label" >ID</label>
+                        <input id="id_por_editar" name="id_por_editar" type="number" class="form-control" required>
+                    </div>
                     <div class="mb-3">
                         <label for="raza_por_editar" class="col-form-label">Raza:</label>
                         <input id="raza_por_editar" name="raza_por_editar" type="text" class="form-control" value="">
@@ -137,6 +141,6 @@
         </div>
     </div>
 </div>
-
+<script src="js/modalPorcinos.js"></script>
   </body>
 </html>

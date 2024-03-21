@@ -23,12 +23,12 @@ module.exports.crear = (req, res) => {
         alim_por: req.body.alim_por,
         cli_por: req.body.cli_por
     })
-    console.log(porcino)
     porcino.save()
     res.redirect('/')  
     }
 // editar
 module.exports.editar = (req,res) =>{
+    const id_por = req.body.id_por_editar
     const raza_por = req.body.raza_por_editar;
     const edad_por = req.body.edad_por_editar;
     const peso_por = req.body.peso_por_editar;
@@ -46,7 +46,7 @@ module.exports.editar = (req,res) =>{
 // eliminar 
 module.exports.eliminar = (req,res) =>{
     const id_por = req.params.id_por
-    Cliente.findOneAndDelete({id_por:id_por}).exec()
+    Porcino.findOneAndDelete({id_por:id_por}).exec()
   .then(resultado => {
     console.log("Objeto eliminado : ", resultado); 
   })

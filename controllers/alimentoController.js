@@ -21,7 +21,7 @@ module.exports.editar = (req,res) =>{
     const codigo = req.body.id_editar
     const Nombre = req.body.nombre_editar
     const Dosis = req.body.dosis_editar
-    Alimento.findOneAndUpdate({id:id},{Nombre,Dosis})
+    Alimento.findOneAndUpdate({id:codigo},{Nombre,Dosis})
     .then(resultado=>{
         console.log("Objeto Actualizado : ", resultado); 
     })
