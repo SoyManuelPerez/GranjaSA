@@ -1,12 +1,18 @@
 const Porcino = require('../model/Porcino')
 const porcinos = require('../model/Cliente')
-
+const alimentos = require('../model/Alimento')
 //mostrar
 module.exports.mostrar = (req, res) => {
-    porcinos.find({})
-    .then(porcinos => res.render('porcinos', {porcinos: porcinos}))
-    .catch(err => console.log(err, 'Error mostrar clientes'))
-    }
+    Promise.all([
+        alimentos.find({}),
+        porcinos.find({}),
+        Porcino.find({})
+    ])
+    .then(([alimentos, porcinos, Porcino]) => {
+        res.render('porcinos', { alimentos: alimentos, porcinos: porcinos , Porcino:Porcino});
+    })
+    .catch(err => console.log(err, 'Error mostrando datos'));
+};
 //crear 
 module.exports.crear = (req, res) => {
     const porcino = new Porcino ({
@@ -15,8 +21,9 @@ module.exports.crear = (req, res) => {
         edad_por: req.body.edad_por,
         peso_por: req.body.peso_por,
         alim_por: req.body.alim_por,
-        cliente_por: req.body.cliente_por
+        cli_por: req.body.cli_por
     })
+    console.log(porcino)
     porcino.save()
     res.redirect('/')  
     }

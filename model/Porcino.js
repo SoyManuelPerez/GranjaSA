@@ -5,7 +5,7 @@ const porcino = new mongoose.Schema ({
     edad_por: Number,
     peso_por: Number,
     alim_por: Number,
-    cliente_por: Number
+    cli_por: Number
 })
 
 module.exports = mongoose.model("porcinos", porcino)

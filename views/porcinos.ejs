@@ -23,8 +23,8 @@
               <form action="/crear" method="POST">
                 <center>
                 <div class="col-md-6">
-                    <label for="id_porcino" class="form-label" >ID</label>
-                    <input id="id_porcino" name="id_porcino" type="number" class="form-control" required>
+                    <label for="id_por" class="form-label" >ID</label>
+                    <input id="id_por" name="id_por" type="number" class="form-control" required>
                 </div>
                 <div class="col-md-6">
                     <label for="raza_por" class="form-label" >Raza</label>
@@ -47,6 +47,10 @@
                   <label for="alim_por" class="form-label" >Alimentacion</label>
                   <select name="alim_por" id="alim_por" class="form-select" aria-label="Alimentos">
                     <option value="Null">--Seleciones Alimento--</option>
+                    <% alimentos.forEach((Porcinoalimentos) => { %>
+                        <option value="<%= Porcinoalimentos.codigo %>"><%= Porcinoalimentos.codigo %></option>
+                      <% }); %>
+                  </select>
                 </select>
               </div>
               <div class="col-md-6">
@@ -77,6 +81,20 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <% Porcino.forEach( (Porcino) => { %>
+                        <tr>
+                            <td> <%= Porcino.id_por %></td>
+                            <td> <%= Porcino.raza_por %></td>
+                            <td> <%= Porcino.edad_por %></td>
+                            <td> <%= Porcino.peso_por %></td>
+                            <td> <%= Porcino.alim_por %></td>
+                            <td> <%= Porcino.cli_por %></td>
+                            <td> 
+                                <a type="button" class="btnEditarPorcino btn btn-outline-primary bi bi-pencil"> </a>
+                                <a href="/borrarPorcino/<%= Porcino.id_por %>" class="btn btn-outline-danger bi bi-trash"> </a>
+                            </td>
+                        </tr>
+                   <% }) %>
                 </tbody>
               </table>
       </div>
