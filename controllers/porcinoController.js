@@ -33,8 +33,8 @@ module.exports.editar = (req,res) =>{
     const edad_por = req.body.edad_por_editar;
     const peso_por = req.body.peso_por_editar;
     const alim_por = req.body.alim_por_editar;
-    const cliente_por = req.body.cliente_por_editar
-    Porcino.findOneAndUpdate({id_por:id_por},{raza_por, edad_por, peso_por, alim_por, cliente_por})
+    const cli_por = req.body.cliente_por_editar;
+    Porcino.findOneAndUpdate({id_por:id_por},{raza_por, edad_por, peso_por, alim_por, cli_por})
     .then(resultado=>{
         console.log("Objeto Actualizado : ", resultado); 
     })

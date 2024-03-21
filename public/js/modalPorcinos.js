@@ -1,5 +1,5 @@
 const modalPorcino = new bootstrap.Modal(document.getElementById('modalPorcino'))
-
+console.log ("sirve el modarl")
 const on = (element, event, selector, handler) => {
     element.addEventListener(event, e => {
         if (e.target.closest(selector)) {
@@ -18,3 +18,4 @@ on(document, 'click', '.btnEditarPorcino', e => {
     id_por_editar.setAttribute('readonly', true)
     modalPorcino.show();
   })
+ 

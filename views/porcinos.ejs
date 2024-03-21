@@ -9,6 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <title> GRANJA SA</title>
   </head>
@@ -51,7 +53,6 @@
                         <option value="<%= Porcinoalimentos.codigo %>"><%= Porcinoalimentos.codigo %></option>
                       <% }); %>
                   </select>
-                </select>
               </div>
               <div class="col-md-6">
                 <label for="cli_por" class="form-label" >Cliente</label>
@@ -67,8 +68,9 @@
                 <button type="submit" class="w-100 btn btn-guardar btn-lg"> <i class="bi bi-save"></i>Registrar Porcino</button>
               </form>
          </div>
+         <br>
          <div class="container">
-              <table id="tablaPorcinos" class="table mt-4">
+              <table id="tablaPorcinos" class="table mt-4 display">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -111,7 +113,7 @@
                 <form action="/editarPorcino" method="POST">
                     <div class="mb-3">
                         <label for="id_por_editar"  class="col-form-label" >ID</label>
-                        <input id="id_por_editar" name="id_por_editar" type="number" class="form-control" required>
+                        <input id="id_por_editar" name="id_por_editar" type="tex" class="form-control" required>
                     </div>
                     <div class="mb-3">
                         <label for="raza_por_editar" class="col-form-label">Raza:</label>
@@ -127,11 +129,19 @@
                     </div>
                     <div>
                         <label for="alim_por_editar" class="col-form-label">Alimento:</label>
-                        <input id="tel_editar" name="tel_editar" type="text" class="form-control" value="">
+                        <select name="alim_por_editar" id="alim_por_editar" class="form-select" aria-label="Alimentos">
+                            <% alimentos.forEach((Porcinoalimentos) => { %>
+                                <option value="<%= Porcinoalimentos.codigo %>"><%= Porcinoalimentos.codigo %></option>
+                              <% }); %>
+                          </select>
                     </div>
                     <div>
-                      <label for="cliente_por_editar" class="col-form-label">Cliente:</label>
-                      <input id="cliente_por_editar" name="cliente_por_editar" type="text" class="form-control" value="">
+                      <label for="cliente_por_editar" class="form-label" >Cliente</label>
+                      <select name="cliente_por_editar" id="cliente_por_editar" class="form-select" aria-label="Clientes">
+                          <% porcinos.forEach((porcinosCliente) => { %>
+                              <option value="<%= porcinosCliente.cedula %>"><%= porcinosCliente.cedula %></option>
+                            <% }); %>
+                        </select>
                   </div>
             </div>
             <div class="modal-footer">
@@ -142,5 +152,26 @@
     </div>
 </div>
 <script src="js/modalPorcinos.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.68/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script>
+$(document).ready( function () {
+    $('#tablaPorcinos').DataTable({
+        searching: false,
+        dom: 'Bfrtip',
+        buttons: [
+            'excel', 'pdf', 'print'
+        ]
+    } 
+    );
+} );
+</script>
   </body>
 </html>
