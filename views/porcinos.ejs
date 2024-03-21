@@ -58,8 +58,8 @@
                 <label for="cli_por" class="form-label" >Cliente</label>
                 <select name="cli_por" id="cli_por" class="form-select" aria-label="Clientes">
                     <option value="Null">--Seleciones Cliente--</option>
-                    <% porcinos.forEach((porcinosCliente) => { %>
-                        <option value="<%= porcinosCliente.cedula %>"><%= porcinosCliente.cedula %></option>
+                    <% Cliente.forEach((Cliente) => { %>
+                        <option value="<%= Cliente.cedula %>"><%= Cliente.cedula %></option>
                       <% }); %>
                   </select>
             </div>
@@ -142,8 +142,8 @@
                     <div>
                       <label for="cliente_por_editar" class="form-label" >Cliente</label>
                       <select name="cliente_por_editar" id="cliente_por_editar" class="form-select" aria-label="Clientes">
-                          <% porcinos.forEach((porcinosCliente) => { %>
-                              <option value="<%= porcinosCliente.cedula %>"><%= porcinosCliente.cedula %></option>
+                          <% Cliente.forEach((Cliente) => { %>
+                              <option value="<%= Cliente.cedula %>"><%= Cliente.cedula %></option>
                             <% }); %>
                         </select>
                   </div>

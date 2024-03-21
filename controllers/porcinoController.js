@@ -1,15 +1,15 @@
 const Porcino = require('../model/Porcino')
-const porcinos = require('../model/Cliente')
+const Cliente = require('../model/Cliente')
 const alimentos = require('../model/Alimento')
 //mostrar
 module.exports.mostrar = (req, res) => {
     Promise.all([
         alimentos.find({}),
-        porcinos.find({}),
+        Cliente.find({}),
         Porcino.find({})
     ])
-    .then(([alimentos, porcinos, Porcino]) => {
-        res.render('porcinos', { alimentos: alimentos, porcinos: porcinos , Porcino:Porcino});
+    .then(([alimentos, Cliente, Porcino]) => {
+        res.render('porcinos', { alimentos: alimentos, Cliente: Cliente , Porcino:Porcino});
     })
     .catch(err => console.log(err, 'Error mostrando datos'));
 };
