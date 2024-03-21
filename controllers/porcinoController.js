@@ -27,7 +27,6 @@ module.exports.editar = (req,res) =>{
     const peso_por = req.body.peso_por_editar;
     const alim_por = req.body.alim_por_editar;
     const cliente_por = req.body.cliente_por_editar
-    console.log(cedula)
     Porcino.findOneAndUpdate({id_por:id_por},{raza_por, edad_por, peso_por, alim_por, cliente_por})
     .then(resultado=>{
         console.log("Objeto Actualizado : ", resultado); 

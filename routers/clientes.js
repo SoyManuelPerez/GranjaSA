@@ -6,9 +6,9 @@ router.get('/clientes', clienteController.mostrar,(req,res)=>{
 res.render('clientes')
 })
 // agregar clientes
-router.post('/crear',clienteController.crear)
+router.post('/crearCliente',clienteController.crear)
 //Modificar
-router.post('/editar',clienteController.editar)
+router.post('/editarCliente',clienteController.editar)
 // Eliminar
-router.get('/borrar/:cedula',clienteController.eliminar)
+router.get('/borrarCliente/:cedula',clienteController.eliminar)
 module.exports = router

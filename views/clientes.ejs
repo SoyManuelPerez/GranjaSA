@@ -20,7 +20,7 @@
       <div class="container">
           <div class="shadow-lg pb-3 mb-5 bg-body rounded">
               <h4> Datos del cliente</h4>
-              <form action="/crear" method="POST">
+              <form action="/crearCliente" method="POST">
                 <center>
                 <div class="col-md-6">
                     <label for="cedula" class="form-label" >Cedula</label>
@@ -63,7 +63,7 @@
                             <td> <%= cliente.tel %></td>
                             <td> 
                                 <a type="button" class="btnEditar btn btn-outline-primary bi bi-pencil"> </a>
-                                <a href="/borrar/<%= cliente.cedula %>" class="btn btn-outline-danger bi bi-trash"> </a>
+                                <a href="/borrarCliente/<%= cliente.cedula %>" class="btn btn-outline-danger bi bi-trash"> </a>
                             </td>
                         </tr>
                    <% }) %>

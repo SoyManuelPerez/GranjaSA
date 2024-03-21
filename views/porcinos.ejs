@@ -28,7 +28,12 @@
                 </div>
                 <div class="col-md-6">
                     <label for="raza_por" class="form-label" >Raza</label>
-                    <input id="raza_por" name="raza_por" type="text" class="form-control" required>
+                    <select name="raza_por" id="raza_por" class="form-select" aria-label="Raza">
+                        <option value="Null">--Selecione Raza--</option>
+                        <option value="York">York</option>
+                        <option value="Hamp">Hamp</option>
+                        <option value="Duroc">Duroc</option>
+                    </select>
                 </div>
                 <div class="col-md-6">
                     <label for="edad_por" class="form-label" >Edad</label>
@@ -40,11 +45,13 @@
                 </div>
                 <div class="col-md-6">
                   <label for="alim_por" class="form-label" >Alimentacion</label>
-                  <input id="alim_por" name="alim_por" type="number" class="form-control" required>
+                  <select name="alim_por" id="alim_por" class="form-select" aria-label="Alimentos">
+                    <option value="Null">--Seleciones Alimento--</option>
+                </select>
               </div>
               <div class="col-md-6">
                 <label for="cli_por" class="form-label" >Cliente</label>
-                <select name="cli_por" id="cli_por" class="form-select" aria-label="Default select example">
+                <select name="cli_por" id="cli_por" class="form-select" aria-label="Clientes">
                     <option value="Null">--Seleciones Cliente--</option>
                     <% porcinos.forEach((porcinosCliente) => { %>
                         <option value="<%= porcinosCliente.cedula %>"><%= porcinosCliente.cedula %></option>
@@ -83,7 +90,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/editar" method="POST">
+                <form action="/editarCliente" method="POST">
                     <div class="mb-3">
                         <label for="raza_por_editar" class="col-form-label">Raza:</label>
                         <input id="raza_por_editar" name="raza_por_editar" type="text" class="form-control" value="">
