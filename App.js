@@ -13,10 +13,11 @@ mongoose.connect('mongodb://localhost/granjaSA' , { useNewUrlParser: true, useUn
 app.use(express.static('public'))
 const clientes = require('./routers/clientes')
 const alimentos = require('./routers/alimentos')
+const Porcino = require('./routers/porcinos')
+app.use(Porcino)
 app.use(clientes)
 app.use(alimentos)
 
-
 app.listen(3000, ()=>{
-    console.log('Servidor corriendo en https://localhost:3000')
+    console.log('Servidor corriendo en localhost:3000')
 })
